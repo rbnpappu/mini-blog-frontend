@@ -5,7 +5,7 @@ export const getPosts = async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/posts"
     );
-    const resTodata = await axios.get("https://mini-blog-backend-4n3r.onrender.com/admin/posts");
+    const resTodata = await axios.get("http://localhost:5000/admin/posts");
 
     const mergedData = [...resTodata.data, ...response.data];
 
@@ -18,7 +18,7 @@ export const getPosts = async () => {
 
 export const getAdminPosts = async () => {
   try {
-    const resTodata = await axios.get("https://mini-blog-backend-4n3r.onrender.com/admin/posts");
+    const resTodata = await axios.get("http://localhost:5000/admin/posts");
 
     console.log(resTodata,"called");
 
@@ -34,7 +34,7 @@ export const getAdminPosts = async () => {
 
 export const createPostByAdmin = async (post:any) => {
   try {
-    const response = await axios.post("https://mini-blog-backend-4n3r.onrender.com/admin/posts", post);
+    const response = await axios.post("http://localhost:5000/admin/posts", post);
     return response.data;
   } catch (err) {
     console.error("Error fetching posts:", err);
@@ -45,7 +45,7 @@ export const createPostByAdmin = async (post:any) => {
 
 export const updatePostByAdmin = async (post:any, id:any) => {
   try {
-    const response = await axios.put(`https://mini-blog-backend-4n3r.onrender.com/admin/posts/${id}`, post);
+    const response = await axios.put(`http://localhost:5000/admin/posts/${id}`, post);
     return response.data;
   } catch (err) {
     console.error("Error fetching posts:", err);
@@ -56,7 +56,7 @@ export const updatePostByAdmin = async (post:any, id:any) => {
 export const deletePostByAdmin = async (id:any) => {
   try {
   
-    await axios.delete(`https://mini-blog-backend-4n3r.onrender.com/admin/posts/${id}`);
+    await axios.delete(`http://localhost:5000/admin/posts/${id}`);
     return true;
   } catch (err) {
     console.error("Error fetching posts:", err);
